@@ -10,7 +10,7 @@ h3, h2, h1 {
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 20, "opsz" 24;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 75, "opsz" 24;
 }
 
 span.icon {
@@ -32,6 +32,11 @@ span.symbol {
 span.go-down {
   font-size: 1em;
   transform: translateY(22%) rotate(45deg);
+}
+
+span.go-up {
+  font-size: 1em;
+  transform: translateY(22%) rotate(-45deg);
 }
 
 * {
@@ -115,6 +120,42 @@ header, #links {
 header h3 a, #links h3 a {
   color: black;
 }
+header .expandable, #links .expandable {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+header .expandable ul, #links .expandable ul {
+  transition-duration: 0.2s;
+  position: absolute;
+  left: 50%;
+  width: max-content;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  background: white;
+  border: 1px solid rgb(233, 233, 233);
+  padding: 20px;
+  box-sizing: border-box;
+}
+header .expandable .go-down, header .expandable .go-up, #links .expandable .go-down, #links .expandable .go-up {
+  transition-duration: 0.2s;
+}
+header .expandable:hover > a, #links .expandable:hover > a {
+  color: black;
+}
+header .expandable:hover .go-down, #links .expandable:hover .go-down {
+  transition-duration: 0.2s;
+  transform: translateY(22%) rotate(90deg);
+}
+header .expandable:hover .go-up, #links .expandable:hover .go-up {
+  transition-duration: 0.2s;
+  transform: translateY(22%) rotate(-90deg);
+}
+header .expandable:hover ul, #links .expandable:hover ul {
+  display: flex;
+}
 header ul, #links ul {
   margin: 0;
   padding: 0;
@@ -127,6 +168,14 @@ header ul a:hover, #links ul a:hover {
 header ul i, #links ul i {
   font-size: 1.2rem;
   margin-bottom: -11%;
+}
+
+header .expandable ul {
+  top: 100%;
+}
+
+#links .expandable ul {
+  bottom: 100%;
 }
 
 .call-to-action {
@@ -142,9 +191,13 @@ header ul i, #links ul i {
   border-radius: 10px;
   transition-duration: 0.2s;
 }
-.call-to-action a:hover .icon {
+.call-to-action a:hover .deg-45 {
   transition-duration: 0.2s;
   transform: translateY(22%) rotate(-45deg);
+}
+.call-to-action a:hover .deg-90 {
+  transition-duration: 0.2s;
+  transform: translateY(22%) rotate(90deg);
 }
 .call-to-action a:hover::before {
   width: 90%;
@@ -176,7 +229,6 @@ nav {
   align-items: center;
   z-index: 2;
   border-bottom: 1px solid rgb(233, 233, 233);
-  box-shadow: 0px -2px 20px rgba(105, 105, 105, 0.176);
   transition-duration: 0.2s;
 }
 nav div.call-to-action {
@@ -230,6 +282,7 @@ nav a.section-nav:active::before {
 
 section {
   padding: 50px 100px 50px 100px;
+  border-bottom: 1px solid rgb(233, 233, 233);
 }
 section .icon-s1 {
   color: rgba(255, 0, 0, 0.7);
@@ -247,7 +300,6 @@ section .icon-s3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgb(233, 233, 233);
 }
 #prelog h1 {
   width: 100%;
@@ -257,6 +309,7 @@ section .icon-s3 {
 }
 #prelog p {
   width: 80vw;
+  text-align: center;
 }
 
 .articles {
@@ -316,6 +369,10 @@ section .icon-s3 {
   background: rgba(104, 118, 117, 0.05);
 }
 
+#media > .call-to-action {
+  margin-top: 10px;
+  justify-content: end;
+}
 #media .articles {
   justify-content: start;
 }
@@ -376,14 +433,15 @@ footer {
 }
 
 #credits {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 50px;
 }
 #credits small {
-  text-align: end;
-  width: 60vw;
+  text-align: justify;
+  width: 40vw;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -36,11 +36,11 @@ section.forEach(section => {
         entries.forEach(entry => {
             if (entry.isIntersecting) 
             {
-                document.querySelector(`a[href="#${section.id}"`).classList.add("active");
+                document.querySelector(`nav a[href="#${section.id}"`).classList.add("active");
             }
             else
             {
-                document.querySelector(`a[href="#${section.id}"`).classList.remove("active");
+                document.querySelector(`nav a[href="#${section.id}"`).classList.remove("active");
             }
         })
     }, sectionObserveOptions);
